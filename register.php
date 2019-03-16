@@ -19,7 +19,7 @@ $statement->execute([':email' => $email]);
 $user = $statement->fetchColumn();
 if($user) {
     $errorMessage = "Пользователь с таким email уже существует";
-    include 'errors.php';
+    	include 'errors.php';
     exit;
 }
 

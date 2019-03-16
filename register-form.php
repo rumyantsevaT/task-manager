@@ -32,9 +32,3 @@
 </body>
 </html>
 
-<?php if (isset($messErrore)): ?>
-	<p><?php echo $messErrore; ?></p>
-<?php else: ?>
-	<p>Заполните все поля</p>
-<?php endif; ?>
-
