@@ -25,7 +25,7 @@
         <label for="inputEmail" class="sr-only">Описание</label>
             <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Описание"></textarea>
 <!--        Создание формы для отправки картинки-->
-<!--        <input type="file" name="image">-->
+        <input type="file" name="image_file">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Отправить</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
     </form>

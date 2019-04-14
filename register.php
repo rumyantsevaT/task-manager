@@ -1,8 +1,8 @@
 <?php
 //Принимаем входные данные из формы
-$username = $_POST['username'];
-$email = $_POST['email'];
-$password = $_POST['password'];
+$username = trim($_POST['username']);
+$email = trim($_POST['email']);
+$password = trim($_POST['password']);
 
 //Валидация на пустоту полей
 foreach ($_POST as $input) {
