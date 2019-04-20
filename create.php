@@ -16,11 +16,11 @@ foreach ($_POST as $input) {
     }
 }
 //Валидация на размер файла
-//if($image_size > 15728640) {
-//    $errorMsg = 'Файл не должен превышать 15МБ';
-//    include 'errors.php';
-//    exit;
-//}
+if($image_size > 15728640) {
+    $errorMsg = 'Файл не должен превышать 15МБ';
+    include 'errors.php';
+    exit;
+}
 
 //Сохранение задачи в базе данных
 $pdo = new PDO("mysql:host=localhost;dbname=taskmanager;charset=utf8", "root", "root");
