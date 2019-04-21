@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost:3306
--- Время создания: Апр 14 2019 г., 15:27
+-- Время создания: Апр 21 2019 г., 20:40
 -- Версия сервера: 5.5.42
 -- Версия PHP: 7.0.0
 
@@ -23,44 +23,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `posts`
+-- Структура таблицы `tasks`
 --
 
-CREATE TABLE `posts` (
+CREATE TABLE `tasks` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `image` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+  `image` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `posts`
+-- Дамп данных таблицы `tasks`
 --
 
-INSERT INTO `posts` (`id`, `title`, `description`, `image`) VALUES
-(1, 'Заголовок 1', 'Описание заголовка 1', NULL),
-(2, 'Заголовок 1', 'Описание заголовка 1', NULL),
-(3, '111', '111', NULL),
-(6, 'test', 'test text', NULL),
-(7, 'test', 'test text', NULL),
-(8, 'test', 'test text', 'mybottle.jpg'),
-(9, 'test', 'test text', 'mybottle.jpg'),
-(11, 'test444', 'test text444', 'mybottle.jpg'),
-(12, 'test444', 'test text444', 'mybottle.jpg'),
-(13, 'test444', 'test text444', 'mybottle.jpg'),
-(14, 'rtrtrt', 'rtrtrt', 'mybottle.jpg'),
-(15, 'test444', 'test text444', 'mybottle.jpg'),
-(16, 'Заголовок', 'Описание', 'IMG_4894.PNG'),
-(17, 'Заголовок 333', 'Описание 333', 'IMG_4894.PNG'),
-(18, 'оавоыадовыда', 'fsdfdsfdsfsdf', 'IMG_9375.JPG'),
-(19, 'оавоыадовыдапавпав', 'fsdfdsfdsfsdfпвпавп', NULL),
-(20, '666', '666', 'IMG_8306.JPG'),
-(21, '666565', '6665656', 'IMG_8306.JPG'),
-(22, 'кукукук', 'укукукук', 'IMG_9375-1.jpg'),
-(23, 'кукукук111', 'укукукук', 'IMG_9375-1.jpg'),
-(24, 'кукукук111', 'укукукук', 'IMG_9375-1.jpg'),
-(25, '5656', '6666', '29-8marta2.jpg'),
-(26, '565666', '666677', '29-8marta2.jpg');
+INSERT INTO `tasks` (`id`, `title`, `description`, `image`, `user_id`) VALUES
+(15, '1', '11', '636704463446126112.jpeg', 2),
+(16, '2', '222', '33abafef293281108edf7bb0766eb70d.jpg', 2),
+(17, 'запись другого пользователя', 'вавав', '21533892.cc7cb014.1200x1200o.f8d984404d72.jpeg', 3),
+(18, 'вавава', 'вавава', '400x400.png', 3);
 
 -- --------------------------------------------------------
 
@@ -80,19 +62,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
-(1, '1121', '12@example.php', '202cb962ac59075b964b07152d234b70'),
-(2, '23', '23@mail.ru', '202cb962ac59075b964b07152d234b70'),
-(3, '45', '45@mail.ru', '6c8349cc7260ae62e3b1396831a8398f'),
-(4, '121212', '121212@mail.ru', '93279e3308bdbbeed946fc965017f67a');
+(2, '111', '111@mail.ru', '698d51a19d8a121ce581499d7b701668'),
+(3, '222', '222@mail.ru', 'bcbe3365e6ac95ea2c0343a2395834dd');
 
 --
 -- Индексы сохранённых таблиц
 --
 
 --
--- Индексы таблицы `posts`
+-- Индексы таблицы `tasks`
 --
-ALTER TABLE `posts`
+ALTER TABLE `tasks`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -106,10 +86,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT для таблицы `posts`
+-- AUTO_INCREMENT для таблицы `tasks`
 --
-ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+ALTER TABLE `tasks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
