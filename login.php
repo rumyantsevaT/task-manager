@@ -1,15 +1,20 @@
 <?php
-$email = $_POST['email'];
-$password = $_POST['password'];
+session_start();
+$email = trim($_POST['email']);
+$password = trim($_POST['password']);
+$remember = $_POST['rememberme'];
 
-//проверка на пустоту
+//Проверка нажата ли Запомнить меня
+if(isset($remember) AND $remember == "yes"){
+    $_SESSION['remember'] = $remember;
+}
+//проверка вводимых данных на пустоту
 foreach ($_POST as $input) {
 	if(empty($input)) {
 		include 'errors.php';
 		exit;
 	}
 }
-
 //Подготовка и выполнение запроса к БД
 $pdo = new PDO('mysql:host=localhost;dbname=taskmanager', 'root', 'root');
 $sql = 'SELECT id, email FROM users WHERE email=:email AND password=:password';
@@ -24,18 +29,17 @@ $statement->execute();
 //получаем результат в виде ассоциативного массива
 $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-
 //Не нашли пользователя
 if(!$user) {
 	$errorMessage = "Неверный логин и пароль";
 	include 'errors.php';
 	exit;
 }
-//Если нашли - Записываем данные в сессию
-session_start();
+//Если нашли пользователя- Записываем данные в сессию
 $_SESSION['user_id'] = $user['id'];
 $_SESSION['email'] = $user['email'];
 
+
 //Переадресация
 header("Location: /list.php");
-exit;
+
