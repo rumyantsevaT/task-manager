@@ -4,9 +4,10 @@ $email = trim($_POST['email']);
 $password = trim($_POST['password']);
 $remember = $_POST['rememberme'];
 
-//Проверка нажата ли Запомнить меня
+//если нажат чекбокс Запомнить меня, то записываем пользователя в сессию
 if(isset($remember) AND $remember == "yes"){
-    $_SESSION['remember'] = $remember;
+    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['email'] = $user['email'];
 }
 //проверка вводимых данных на пустоту
 foreach ($_POST as $input) {
@@ -36,10 +37,10 @@ if(!$user) {
 	exit;
 }
 //Если нашли пользователя- Записываем данные в сессию
-$_SESSION['user_id'] = $user['id'];
-$_SESSION['email'] = $user['email'];
+//$_SESSION['user_id'] = $user['id'];
+//$_SESSION['email'] = $user['email'];
 
 
 //Переадресация
-header("Location: /list.php");
+header("Location: list.php");
 

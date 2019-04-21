@@ -1,4 +1,12 @@
+<?php
+//Список задач
+session_start();
+var_dump($_SESSION);
+//Соединяемся с БД
+$pdo = new PDO("mysql:host=localhost;dbname=taskmanager;charset=utf8", "root", "root");
+$sql="SELECT * FROM tasks WHERE id=:id";
 
+?>
 <!doctype html>
 <html lang="ru">
   <head>

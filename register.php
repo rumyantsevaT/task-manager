@@ -23,16 +23,18 @@ if($user) {
     exit;
 }
 
-//Запись данных в БД
+//Запись введенных данных пользователя в БД
 $sql = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
 $statement = $pdo->prepare($sql);
-//password hash
-    $_POST['password'] = md5($_POST['password']);
-    $result = $statement->execute($_POST);
-    if(!$result) {
-        $errorMessage = "Ошибка регистрации ";
-        include 'errors.php';
-        exit;
-    }
+
+//кодировка пароля в md5
+$_POST['password'] = md5($_POST['password']);
+//Результат - запись POST данных
+$result = $statement->execute($_POST);
+if(!$result) {
+    $errorMessage = "Ошибка регистрации ";
+    include 'errors.php';
+    exit;
+}
 //Переадресация на страницу авторизации
-header('Location: /login-form.php');
+header('Location: login-form.php');
