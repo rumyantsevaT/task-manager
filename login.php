@@ -4,11 +4,11 @@ $email = trim($_POST['email']);
 $password = trim($_POST['password']);
 $remember = $_POST['rememberme'];
 
-//если нажат чекбокс Запомнить меня, то записываем пользователя в сессию
+//если нажат чекбокс Запомнить меня, то записываем пользователя в сессию на 30 дней
 if(isset($remember) AND $remember == "yes"){
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['email'] = $user['email'];
+    setcookie("save", $remember, (time()+86400)*30);
 }
+
 //проверка вводимых данных на пустоту
 foreach ($_POST as $input) {
 	if(empty($input)) {
@@ -37,8 +37,8 @@ if(!$user) {
 	exit;
 }
 //Если нашли пользователя- Записываем данные в сессию
-//$_SESSION['user_id'] = $user['id'];
-//$_SESSION['email'] = $user['email'];
+$_SESSION['user_id'] = $user['id'];
+$_SESSION['email'] = $user['email'];
 
 
 //Переадресация
