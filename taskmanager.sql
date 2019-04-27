@@ -2,10 +2,10 @@
 -- version 4.4.10
 -- http://www.phpmyadmin.net
 --
--- Хост: localhost:3306
--- Время создания: Апр 21 2019 г., 20:40
--- Версия сервера: 5.5.42
--- Версия PHP: 7.0.0
+-- Host: localhost:3306
+-- Generation Time: Apr 27, 2019 at 05:29 PM
+-- Server version: 5.5.42
+-- PHP Version: 7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `taskmanager`
+-- Database: `taskmanager`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `tasks`
+-- Table structure for table `tasks`
 --
 
 CREATE TABLE `tasks` (
@@ -32,22 +32,30 @@ CREATE TABLE `tasks` (
   `description` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `tasks`
+-- Dumping data for table `tasks`
 --
 
 INSERT INTO `tasks` (`id`, `title`, `description`, `image`, `user_id`) VALUES
 (15, '1', '11', '636704463446126112.jpeg', 2),
 (16, '2', '222', '33abafef293281108edf7bb0766eb70d.jpg', 2),
 (17, 'запись другого пользователя', 'вавав', '21533892.cc7cb014.1200x1200o.f8d984404d72.jpeg', 3),
-(18, 'вавава', 'вавава', '400x400.png', 3);
+(18, 'вавава', 'вавава', '400x400.png', 3),
+(19, 'задачв', 'тлдтлотло', '636704463446126112.jpeg', 4),
+(20, '1212121', '121212121212', '400x400.png', 4),
+(21, 'Первая моя запись', 'Описание первой записи про фиолетовую луну', '636704463446126112.jpeg', 5),
+(22, '111111', '111111', '', 5),
+(23, 'симпсон', 'описание про симпсона такое то', '33abafef293281108edf7bb0766eb70d.jpg', 5),
+(24, 'Если нет картинки', 'То получается вставляется картинка no-image.jpg', '', 5),
+(25, 'Еще запись с изображением', 'вывыавыаыва', '63f927b24.jpg', 5),
+(26, 'сысысвысывс', 'сывсысвысвы', '636704463446126112.jpeg', 5);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -55,46 +63,48 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
 (2, '111', '111@mail.ru', '698d51a19d8a121ce581499d7b701668'),
-(3, '222', '222@mail.ru', 'bcbe3365e6ac95ea2c0343a2395834dd');
+(3, '222', '222@mail.ru', 'bcbe3365e6ac95ea2c0343a2395834dd'),
+(4, 'Ð˜ÐœÑ Ð¼Ð¾Ðµ', '123@mail.ru', '202cb962ac59075b964b07152d234b70'),
+(5, 'Таня', 'offersoler@mail.ru', 'd60db28d94d538bbb249dcc7f2273ab1');
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `tasks`
+-- Indexes for table `tasks`
 --
 ALTER TABLE `tasks`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `tasks`
+-- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
--- AUTO_INCREMENT для таблицы `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
