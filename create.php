@@ -1,6 +1,9 @@
 <?php
-//Обрезаем входные данные
+//Подключаем соединение с БД
+require "connect_to_db.php";
+
 session_start();
+//Обрезаем входные данные
 $title = trim($_POST['title']);
 $description = trim($_POST['description']);
 $imgname = $_FILES['image_file']['name'];
@@ -22,7 +25,7 @@ if($image_size > 15728640) {
 }
 
 //Сохранение задачи в базе данных
-$pdo = new PDO("mysql:host=localhost;dbname=taskmanager;charset=utf8", "root", "root");
+//$pdo = new PDO("mysql:host=localhost;dbname=taskmanager;charset=utf8", "root", "root");
 $sql = "INSERT INTO tasks (title, description, image, user_id) VALUES (:title, :description, :image, :user_id)";
 $statement = $pdo->prepare($sql);
 $statement->bindParam(":title", $title);

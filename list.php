@@ -1,11 +1,12 @@
 <?php
-//Список задач
 session_start();
-//Соединяемся с БД
-$pdo = new PDO("mysql:host=localhost;dbname=taskmanager;charset=utf8", "root", "root");
+//Подключаем соединение с БД
+require "connect_to_db.php";
+//Соединяемся с БД и достать юзера по id
+//$pdo = new PDO("mysql:host=localhost;dbname=taskmanager;charset=utf8", "root", "root");
 $sql = "SELECT id, title, description, image FROM tasks WHERE user_id=:user_id";
 $statement = $pdo->prepare($sql);
-//привязка к сессии пользователя
+//привязка к сессии id пользователя
 $statement->bindParam(":user_id", $_SESSION['user_id']);
 $statement->execute();
 $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -56,41 +57,48 @@ $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
     </header>
 
     <main role="main">
-
+<!--Заголовок-->
       <section class="jumbotron text-center">
         <div class="container">
           <h1 class="jumbotron-heading">Проект Task-manager</h1>
-          <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+          <h3 class="jumbotron-heading">Привет, <?php echo $_SESSION['user_name'];?></h3>
+          <p class="lead text-muted">Этот проект позвляет оперировать задачами.</p>
           <p>
             <a href="create-form.php" class="btn btn-primary my-2">Добавить запись</a>
           </p>
+            <p>Если у вас нет подходящего изображения, выберите его из папки <br>assets/img/любоеИзображение.jpg</p>
         </div>
       </section>
 
-      <div class="album py-5 bg-dark">
+    <div class="album py-5 bg-dark">
         <div class="container">
-          <div class="row">
-             <div class="col-12 col-md-4">
-             <?php foreach ($tasks as $task):?>
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src="uploads/<?= $task['image'];?>">
-                <div class="card-body">
-                  <p class="card-text"><?= $task['title'];?></p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <a href="#" class="btn btn-sm btn-outline-secondary">Подробнее</a>
-                      <a href="edit-form.php" class="btn btn-sm btn-outline-secondary">Изменить</a>
-                      <a href="#" class="btn btn-sm btn-outline-secondary" onclick="confirm('are you sure?')">Удалить</a>
-                    </div>
-                  </div>
-                </div>
-              </div><!--.cart-->
-             <?php endforeach;?>
+            <div class="row">
+                <?php foreach ($tasks as $task):?>
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm">
+                            <img class="card-img-top" src="<?php
+                                if(empty($task['image'])){
+                                    echo "assets/img/no-image.jpg";
+                                } else {
+                                    echo "uploads/".$task['image'];
+                                }
+                            ?>" width="300">
+                            <div class="card-body">
+                                <p class="card-text"><?= $task['title'];?></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="#" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                                            <a href="edit-form.php?id=<?= $task['id'];?>" class="btn btn-sm btn-outline-secondary">Изменить</a>
+                                            <a href="#" class="btn btn-sm btn-outline-secondary" onclick="confirm('are you sure?')">Удалить</a>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div><!--.cart-->
+                    </div><!--.col-md-4-->
+                <?php endforeach;?>
             </div>
-          </div>
         </div><!--.container-->
       </div>
-
     </main>
 
     <footer class="text-muted">

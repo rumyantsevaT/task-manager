@@ -1,4 +1,8 @@
 <?php
+
+//Подключаем соединение с БД
+require "connect_to_db.php";
+
 //Принимаем входные данные из формы
 $username = trim($_POST['username']);
 $email = trim($_POST['email']);
@@ -12,7 +16,7 @@ foreach ($_POST as $input) {
     }
 }
 //Проверка существующего пользователя
-$pdo = new PDO('mysql:host=localhost;dbname=taskmanager', 'root', 'root');
+//$pdo = new PDO('mysql:host=localhost;dbname=taskmanager', 'root', 'root');
 $sql = "SELECT id FROM users WHERE email=:email";
 $statement = $pdo->prepare($sql);
 $statement->execute([':email' => $email]);

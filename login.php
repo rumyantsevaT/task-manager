@@ -1,4 +1,8 @@
 <?php
+//Подключаем соединение с БД
+require "connect_to_db.php";
+
+
 session_start();
 $email = trim($_POST['email']);
 $password = trim($_POST['password']);
@@ -17,8 +21,8 @@ foreach ($_POST as $input) {
 	}
 }
 //Подготовка и выполнение запроса к БД
-$pdo = new PDO('mysql:host=localhost;dbname=taskmanager', 'root', 'root');
-$sql = 'SELECT id, email FROM users WHERE email=:email AND password=:password';
+//$pdo = new PDO('mysql:host=localhost;dbname=taskmanager', 'root', 'root');
+$sql = 'SELECT id, email, username FROM users WHERE email=:email AND password=:password';
 $statement = $pdo->prepare($sql);
 
 //Хеширование пароля в md5
@@ -39,6 +43,7 @@ if(!$user) {
 //Если нашли пользователя- Записываем данные в сессию
 $_SESSION['user_id'] = $user['id'];
 $_SESSION['email'] = $user['email'];
+$_SESSION['user_name'] = $user['username'];
 
 
 //Переадресация
