@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Apr 27, 2019 at 05:29 PM
+-- Generation Time: May 01, 2019 at 01:36 AM
 -- Server version: 5.5.42
 -- PHP Version: 7.0.0
 
@@ -32,7 +32,7 @@ CREATE TABLE `tasks` (
   `description` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tasks`
@@ -46,11 +46,13 @@ INSERT INTO `tasks` (`id`, `title`, `description`, `image`, `user_id`) VALUES
 (19, 'задачв', 'тлдтлотло', '636704463446126112.jpeg', 4),
 (20, '1212121', '121212121212', '400x400.png', 4),
 (21, 'Первая моя запись', 'Описание первой записи про фиолетовую луну', '636704463446126112.jpeg', 5),
-(22, '111111', '111111', '', 5),
-(23, 'симпсон', 'описание про симпсона такое то', '33abafef293281108edf7bb0766eb70d.jpg', 5),
+(22, 'Вторая задача', 'текст 111', '636704463446126112.jpeg', 5),
+(23, 'симпсон 2', 'описание про симпсона такое то', '33abafef293281108edf7bb0766eb70d.jpg', 5),
 (24, 'Если нет картинки', 'То получается вставляется картинка no-image.jpg', '', 5),
-(25, 'Еще запись с изображением', 'вывыавыаыва', '63f927b24.jpg', 5),
-(26, 'сысысвысывс', 'сывсысвысвы', '636704463446126112.jpeg', 5);
+(25, '', '', '', 5),
+(26, 'сысысвысывс', 'сывсысвысвы', '636704463446126112.jpeg', 5),
+(27, '111', '11111', '21533892.cc7cb014.1200x1200o.f8d984404d72.jpeg', 5),
+(28, 'тут заголовок же ', 'а тут уже описание ', '63f927b24.jpg', 5);
 
 -- --------------------------------------------------------
 
@@ -99,7 +101,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `users`
 --
