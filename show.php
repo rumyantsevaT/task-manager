@@ -1,6 +1,14 @@
-
+<?php
+session_start();
+require "connect_to_db.php";
+$sql = "SELECT * FROM tasks WHERE id=:id";
+$statement = $pdo->prepare($sql);
+$statement->bindParam(":id", $_GET['id']);
+$statement->execute();
+$task = $statement->fetch(PDO::FETCH_ASSOC);
+?>
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="utf-8">
 
@@ -17,11 +25,16 @@
 
   <body>
     <div class="form-wrapper text-center">
-      <img src="assets/img/no-image.jpg" alt="" width="400">
-      <h2>Lorem ipsum</h2>
-      <p>
-        Пройти первый а потом второй урок. Закрепить практикой и написать проект сначала без подглядываний.
-      </p>
+      <img src="<?php
+        if(empty($task['image'])){
+            echo "assets/img/no-image.jpg";
+        }else {
+            echo "uploads/".$task['image'];
+        }
+      ?>" alt="" width="400">
+      <h2><?= $task['title'];?></h2>
+      <p><?= $task['description'];?></p>
+        <a href="list.php">Назад</a>
     </div>
   </body>
 </html>

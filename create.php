@@ -35,6 +35,6 @@ $statement->bindParam("user_id", $_SESSION['user_id']);
 $task = $statement->execute();
 
 //Перемещаем картинку в папку uploads
-move_uploaded_file($tmpname, 'uploads/'.$_FILES['image_file']['name']);
+move_uploaded_file($tmpname, 'uploads/'.$tmpname);
 
 header("Location: list.php");

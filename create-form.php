@@ -20,9 +20,9 @@
     <form class="form-signin" action="create.php" method="post" enctype="multipart/form-data">
         <img class="mb-4" src="assets/img/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Добавить запись</h1>
-        <label for="inputEmail" class="sr-only">Название</label>
-            <input type="text" id="inputEmail" class="form-control" placeholder="Название" name="title" required>
-        <label for="inputEmail" class="sr-only">Описание</label>
+        <label for="inputText" class="sr-only">Название</label>
+            <input type="text" id="inputText" class="form-control" placeholder="Название" name="title" required>
+        <label for="inputText" class="sr-only">Описание</label>
             <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Описание"></textarea>
 <!--        Создание формы для отправки картинки-->
         <input type="file" name="image_file">
